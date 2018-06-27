@@ -6,30 +6,38 @@ export const emailChanged = email => {
 }
 export const passwordChanged = password => {
   return { type:'password_changed', payload: password }
-}
-const logIn = ({email, password}, dispatch) => {
+};
+const logInFn = ({email, password}, dispatch) => {
+  dispatch({type: 'set_loading', payload: true})
   firebase.auth().signInWithEmailAndPassword(email, password)
       .then((user) => { // Then an action
-        dispatch({ type: 'login_success', payload: user})
+        dispatch({ type: 'login_success', payload: user});
+        dispatch({type: 'set_loading', payload: false})
+        Actions.main();
       })
       .catch((error) => {
-        dispatch({ type: 'auth_fail', payload: error})
+        dispatch({type: 'set_loading', payload: false})
+        dispatch({ type: 'display_message', payload: error.message});
       })
-}
+};
 export const loginUser = ({ email, password }) => {
   return ( dispatch ) => { // Returns a function instead of an action
-    logIn({email, password}, dispatch)
-    Actions.main()
+    logInFn({email, password}, dispatch);
   }
-}
+};
 export const signUpUser = ({ email, password }) => {
   return ( dispatch ) => {
+    dispatch({type: 'set_loading', payload: true})
+
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then((user) => {
-        logIn({email, password}, dispatch)
+        dispatch({type: 'display_message', payload: 'Created user, signing in...'});
+        logInFn({email, password}, dispatch);
       })
       .catch((error) => {
-        dispatch({ type: 'auth_fail', payload: error.message})
+        console.log(error.message)
+        dispatch({type: 'set_loading', payload: false})
+        dispatch({ type: 'display_message', payload: error.message});
       })
   }
 }

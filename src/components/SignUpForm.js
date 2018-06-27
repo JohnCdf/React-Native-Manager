@@ -25,8 +25,8 @@ class SignUpForm extends Component {
         <FormInput value={this.props.email}  placeholder="me@email.com" onChangeText={password => {this.props.emailChanged(password)}}/>
         <FormLabel >Password</FormLabel>
         <FormInput value={this.props.password} onChangeText={password => {this.props.passwordChanged(password)}}/>
-        <FormValidationMessage> {this.props.error}</FormValidationMessage>
-        <Button onPress={this.handleSubmit} color="white" title="Sign Up" buttonStyle={{
+        <FormValidationMessage> {this.props.message}</FormValidationMessage>
+        <Button onPress={this.handleSubmit} loading={this.props.loading} color="white" title="Sign Up" buttonStyle={{
           backgroundColor: "#b83b62",
           borderRadius: 5
         }}/>
@@ -62,7 +62,8 @@ const mapStateToProps = state => {
   return {
     email: state.auth.email,
     password: state.auth.password,
-    error: state.auth.error
+    message: state.auth.message,
+    loading: state.auth.loading
   }
 }
 
