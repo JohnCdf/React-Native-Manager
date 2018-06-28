@@ -1,12 +1,12 @@
 import { Actions } from "react-native-router-flux";
 
-const INITIAL_STATE = {name: '', phone: '', shifts: []};
+const INITIAL_STATE = {name: '', phone: '', shifts: [], loading: false};
 
 export default (state = INITIAL_STATE, action) =>{
   switch (action.type) {
     case "employee_update":
       let { prop, value } = action.payload;
-      
+
       return {...state, [prop] : value}; // key interpolation
     break;
     case "employee_toggle_day":
@@ -23,6 +23,9 @@ export default (state = INITIAL_STATE, action) =>{
     break;
     case "display_message":
       return {...state, message: action.payload}
+    break;
+    case "set_loading":
+      return{...state, loading: action.payload}
     break;
     default:
       return state

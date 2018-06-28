@@ -52,6 +52,7 @@ class EmployeeCreate extends Component {
         title="Add employee"
         onPress={this.handleSubmit}
         titleStyle={{ fontWeight: "700" }}
+        loading={this.props.loading}
         buttonStyle={{
           backgroundColor: "#cc3366",
           width: 250,
@@ -69,8 +70,8 @@ class EmployeeCreate extends Component {
 };
 
 const mapStateToProps = state => {
-  let {name, phone, shifts, message} = state.newEmployee;
-  return {name, phone, shifts, message};
+  let {name, phone, shifts, message, loading} = state.newEmployee;
+  return {name, phone, shifts, message, loading};
 }
 
 export default connect(mapStateToProps, {employeeUpdate, employeeToggleday, employeeCreate, displayMessage})(EmployeeCreate)

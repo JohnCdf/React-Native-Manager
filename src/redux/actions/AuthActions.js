@@ -14,20 +14,21 @@ export const passwordChanged = password => ({
   payload: password
 });
 const logInFn = ({email, password}, dispatch) => {
-  dispatch({type: 'set_loading', payload: true})
+  dispatch({type: 'set_loading', payload: true});
+
   firebase.auth().signInWithEmailAndPassword(email, password)
       .then((user) => { // Then an action
         dispatch({ type: 'login_success', payload: user});
-        dispatch({type: 'set_loading', payload: false})
+        dispatch({type: 'set_loading', payload: false});
         Actions.main();
       })
       .catch((error) => {
         dispatch({type: 'set_loading', payload: false})
         dispatch({ type: 'display_message', payload: error.message});
-      })
+      });
 };
 export const loginUser = ({ email, password }) => {
-  return ( dispatch ) => { // Returns a function instead of an action
+  return ( dispatch ) => {
     logInFn({email, password}, dispatch);
   }
 };
@@ -41,7 +42,6 @@ export const signUpUser = ({ email, password }) => {
         logInFn({email, password}, dispatch);
       })
       .catch((error) => {
-        console.log(error.message)
         dispatch({type: 'set_loading', payload: false})
         dispatch({ type: 'display_message', payload: error.message});
       })

@@ -8,7 +8,7 @@ import { Actions } from 'react-native-router-flux';
 class LogInForm extends Component {
   handleSubmit() {
     let { email, password } = this.props;
-
+    
     if (email.length > 1 && password.length > 1) {
       this.props.loginUser({email, password});
     }
