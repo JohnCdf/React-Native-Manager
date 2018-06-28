@@ -10,6 +10,7 @@
     "ajv": "^6.5.1",
     "eslint": "^4.19.1",
     "firebase": "^5.1.0",
+    "lodash": "^4.17.10",
     "react": "16.3.1",
     "react-native": "0.55.4",
     "react-native-elements": "^0.19.1",

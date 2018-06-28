@@ -1,5 +1,3 @@
-import { Actions } from "react-native-router-flux";
-
 const INITIAL_STATE = {name: '', phone: '', shifts: [], loading: false};
 
 export default (state = INITIAL_STATE, action) =>{
@@ -15,10 +13,10 @@ export default (state = INITIAL_STATE, action) =>{
 
       // IF oldShifts contain the day we want to toggle THEN return array that filters it out OTHERWISE return arrary that pushed in
       return oldShifts.includes(dayToToggle) ? {...state, shifts: oldShifts.filter(day => day != dayToToggle)} : {...state, shifts: [...oldShifts, dayToToggle]};
+
+      //_.map(state.employees, (val, uid) => ({...val, uid}))
     break;
     case "employee_create":
-      Actions.main()
-      
       return INITIAL_STATE
     break;
     case "display_message":

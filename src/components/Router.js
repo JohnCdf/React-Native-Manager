@@ -21,6 +21,7 @@ const RouterComponent = props => {
               key="employeeList" 
               title="Employees" 
               component={EmployeeList}/>
+              
             <Scene
               key="employeeCreate"
               title="Add an employee"

@@ -49,20 +49,20 @@ class EmployeeCreate extends Component {
           }
         <Divider style={{backgroundColor: '#bebebe', marginLeft: 10, marginRight: 10}} />
         <Button
-        title="Add employee"
-        onPress={this.handleSubmit}
-        titleStyle={{ fontWeight: "700" }}
-        loading={this.props.loading}
-        buttonStyle={{
-          backgroundColor: "#cc3366",
-          width: 250,
-          height: 45,
-          borderColor: "transparent",
-          borderWidth: 0,
-          borderRadius: 5
-        }}
-        containerStyle={{ marginTop: 20 }}
-      />
+          title="Add employee"
+          onPress={this.handleSubmit}
+          titleStyle={{ fontWeight: "700" }}
+          loading={this.props.loading}
+          buttonStyle={{
+            backgroundColor: "#cc3366",
+            width: 250,
+            height: 45,
+            borderColor: "transparent",
+            borderWidth: 0,
+            borderRadius: 5
+          }}
+          containerStyle={{ marginTop: 20 }}
+        />
         <FormValidationMessage>{this.props.message}</FormValidationMessage>
       </ScrollView>
     );
