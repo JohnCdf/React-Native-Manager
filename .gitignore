@@ -1,5 +1,8 @@
 # OSX
 #
+
+src/firebaseConfig.js
+
 .DS_Store
 
 # Xcode
