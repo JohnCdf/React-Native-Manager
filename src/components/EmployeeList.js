@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { View, ListView } from 'react-native';
-import { Text } from 'react-native-elements';
+import { Text, ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { fetchEmployees } from '../redux/actions';
 import _ from 'lodash';
@@ -13,10 +13,19 @@ class EmployeeList extends Component {
     
     this.dataSource = ds.cloneWithRows(employees);
   }
+  renderRow(employee) {
+    return (<ListItem
+      key={employee.uid}
+      leftAvatar={{source: { uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg' }}}
+      title={employee.name}
+      subtitle={employee.phone}
+    />);
+  }
   constructor(props){
     super(props);
     this.state = {};
-    this.createDataSource = this.createDataSource.bind(this)
+    this.createDataSource = this.createDataSource.bind(this);
+    this.renderRow = this.renderRow.bind(this);
   };
 
   componentWillMount() {
@@ -30,6 +39,11 @@ class EmployeeList extends Component {
     return(
       <View>
         <Text h1 style={{marginLeft: 10}}>Employees</Text>
+        <ListView
+          enableEmptySections
+          dataSource={this.dataSource}
+          renderRow={this.renderRow}
+        />
       </View>
     );
   }
