@@ -11,7 +11,7 @@ const RouterComponent = props => {
         <Stack key="root" hideNavBar>
           <Stack key="Auth">
             <Scene key="loginForm" title="Log in" component={LogInForm} initial/>
-            <Scene headerBackTitle={false} key="signupForm" title="Sign Up" component={SignUpForm}/>
+            <Scene key="signupForm" title="Sign Up" component={SignUpForm}/>
           </Stack>
           <Stack key="main">
             <Scene 

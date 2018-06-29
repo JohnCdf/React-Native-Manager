@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { View } from 'react-native';
-import { Text, Button, FormInput, FormLabel, FormValidationMessage } from 'react-native-elements';
+import { Text, Button, Input } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { emailChanged, passwordChanged, signUpUser } from '../redux/actions';
 import { Actions } from 'react-native-router-flux';
@@ -21,17 +21,16 @@ class SignUpForm extends Component {
   render(){
     return(
       <View style={styles.Main}>
-        <FormLabel>Email</FormLabel>
-        <FormInput value={this.props.email}  placeholder="me@email.com" onChangeText={password => {this.props.emailChanged(password)}}/>
-        <FormLabel >Password</FormLabel>
-        <FormInput value={this.props.password} onChangeText={password => {this.props.passwordChanged(password)}}/>
-        <FormValidationMessage> {this.props.message}</FormValidationMessage>
-        <Button onPress={this.handleSubmit} loading={this.props.loading} color="white" title="Sign Up" buttonStyle={{
+        <Input value={this.props.email}  placeholder="me@email.com" onChangeText={password => {this.props.emailChanged(password)}} label="Email"/>
+        <Input value={this.props.password} placeholder="********" onChangeText={password => {this.props.passwordChanged(password)}} label="Password"/>
+        <Text style={{color: 'red'}}> {this.props.message}</Text>
+        <Button onPress={this.handleSubmit} loading={this.props.loading} titleStyle={{color: "white"}} title="Log in" buttonStyle={{
           backgroundColor: "#b83b62",
           borderRadius: 5
         }}/>
         <View style={styles.container}>
-          <Text>Already have an account? </Text><Button title="Log in" color="#537bf6" onPress={Actions.loginForm} titleStyle={{ fontWeight: "700" }}
+          <Text>Already have an account? </Text>
+          <Button title="Log in" onPress={Actions.loginForm} titleStyle={{color: "#537bf6", fontWeight: "700" }}
             buttonStyle={{
               backgroundColor: "transparent",
               borderColor: "transparent",
