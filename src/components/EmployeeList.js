@@ -4,6 +4,7 @@ import { Text, ListItem } from 'react-native-elements';
 import { connect } from 'react-redux';
 import { fetchEmployees } from '../redux/actions';
 import _ from 'lodash';
+import { Actions } from 'react-native-router-flux';
 
 class EmployeeList extends Component {
   createDataSource(employees) {
@@ -19,6 +20,7 @@ class EmployeeList extends Component {
       leftAvatar={{source: { uri: 'https://s3.amazonaws.com/uifaces/faces/twitter/adhamdannaway/128.jpg' }}}
       title={employee.name}
       subtitle={employee.phone}
+      onPress={() => Actions.employeeEdit({employee})}
     />);
   }
   constructor(props){

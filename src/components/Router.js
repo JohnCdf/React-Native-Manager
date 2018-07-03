@@ -4,6 +4,7 @@ import LogInForm from './LogInForm';
 import SignUpForm from './SignUpForm';
 import EmployeeList from './EmployeeList';
 import EmployeeCreate from './EmployeeCreate';
+import EmployeeEdit from './EmployeeEdit';
 
 const RouterComponent = props => {
     return(
@@ -13,7 +14,7 @@ const RouterComponent = props => {
             <Scene key="loginForm" title="Log in" component={LogInForm} initial/>
             <Scene key="signupForm" title="Sign Up" component={SignUpForm}/>
           </Stack>
-          <Stack key="main">
+          <Stack key="main" renderBackButton={()=>(null)}>
             <Scene 
               initial
               rightTitle="Add"
@@ -26,6 +27,10 @@ const RouterComponent = props => {
               key="employeeCreate"
               title="Add an employee"
               component={EmployeeCreate}/>
+            <Scene
+              key="employeeEdit"
+              title="Edit employee information"
+              component={EmployeeEdit}/>
           </Stack>
         </Stack>
       </Router>
